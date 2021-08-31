@@ -69,7 +69,7 @@ Sev<- all3[which(all3$trait=='Sev'),]
 Inc<- all3[which(all3$trait=='Inc'),]
 Fdk<- all3[which(all3$trait=='Fdk'),]
 DON<- all3[which(all3$trait=='DON'),]
-save(All, Yield, Heading, TestWeight, Height, Sev, Inc, Fdk, DON, file='TrainingSetJul13.2021.RData')
+save(All, Yield, Heading, TestWeight, Height, Sev, Inc, Fdk, DON, file='TrainingSetJul24.2021.RData')
 
 #fitting a model
 mod<- asreml(fixed=predicted.value~1, random=~loc+year+site+study+germplasmName+germplasmName:site, 

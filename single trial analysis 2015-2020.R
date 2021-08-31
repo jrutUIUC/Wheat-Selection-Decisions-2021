@@ -343,7 +343,11 @@ for(i in 1:length(stdnms)){
       mod<- suppressWarnings(asreml(fixed=fxform, random=rform, residual= ~id(units):us(trait), data=trl, trace=FALSE, aom=T, workspace=64e6))
     }
     mod<- mkConv(mod)
-    p<- suppressWarnings(predict(mod, classify = clasfy, alias=TRUE, pworkspace=64e7))
+    
+    ignr<- row.names(coefficients(mod)$fixed)[grep('block', row.names(coefficients(mod)$fixed))]
+    ignr<- unique(matrix(unlist(strsplit(ignr, "_")), nrow=2)[1,])
+    
+    p<- suppressWarnings(predict(mod, classify = clasfy, pworkspace=64e7)) #try this
     if(trl$studyDesign[1]=='Augmented RCBD'){
       p$pvals<- p$pvals[which(p$pvals[,2]=='test'),]
       p$pvals<-p$pvals[,-c(2)]
@@ -356,7 +360,7 @@ for(i in 1:length(stdnms)){
       mod<- suppressWarnings(asreml(fixed=fxform, random=rform, data=trl, trace=FALSE, aom=T,workspace=64e6))
     }
     mod<- mkConv(mod)
-    p<- suppressWarnings(predict(mod, classify = clasfy, alias=TRUE, pworkspace=64e6))
+    p<- suppressWarnings(predict(mod, classify = clasfy, pworkspace=64e6)) ## try this
     if(trl$studyDesign[1]=='Augmented RCBD'){
       p$pvals<- p$pvals[which(p$pvals[,2]=='test'),]
       p$pvals<-p$pvals[,-c(2)]
