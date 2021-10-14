@@ -1,7 +1,6 @@
 setwd("/Users/jrut/Documents/GitHub/Wheat-Selection-Decisions-2021")
 library(ASExtras4)
 library(reshape)
-load('TrainingSetJul24.2021.RData')
 data2020to21<- All[which(as.numeric(as.character(All$year))>19),]
 #exclude<- c(intersect(which("Pr[0-9]_Car_19"==as.character(data2019to21$study)), which("Aliased"==as.character(data2019to21$status))), intersect(which("Pr[0-9]_Stj_19"==as.character(data2019to21$study)), which("Aliased"==as.character(data2019to21$status))))
 #data2019to21<- data2019to21[-exclude,]

@@ -344,8 +344,8 @@ for(i in 1:length(stdnms)){
     }
     mod<- mkConv(mod)
     
-    ignr<- row.names(coefficients(mod)$fixed)[grep('block', row.names(coefficients(mod)$fixed))]
-    ignr<- unique(matrix(unlist(strsplit(ignr, "_")), nrow=2)[1,])
+    #ignr<- row.names(coefficients(mod)$fixed)[grep('block', row.names(coefficients(mod)$fixed))]
+    #ignr<- unique(matrix(unlist(strsplit(ignr, "_")), nrow=2)[1,])
     
     p<- suppressWarnings(predict(mod, classify = clasfy, pworkspace=64e7)) #try this
     if(trl$studyDesign[1]=='Augmented RCBD'){
